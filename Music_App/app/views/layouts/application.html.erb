@@ -12,12 +12,10 @@
         </form>
       <% else%>
         <a href="/users/new"> Sign Up!
-        <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
         </a>
 
         <br>
         <a href="/session/new"> Sign In!
-        <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
         </a>
       <% end%>
       <%= csrf_meta_tags %>
