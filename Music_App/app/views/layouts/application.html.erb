@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MusicApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <header class="flex-container">
+      <title style="font-style: italic">MusicApp</title>
+      <% if current_user %>
+        <form action="<%= session_url %>" method="POST">
+          <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Log Out!">
+        </form>
+      <% else%>
+        <a href="/users/new"> Sign Up!
+        <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+        </a>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <br>
+        <a href="/session/new"> Sign In!
+        <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+        </a>
+      <% end%>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </header>
   </head>
 
   <body>
+    
     <%= yield %>
   </body>
 </html>

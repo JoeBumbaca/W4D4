@@ -9,7 +9,6 @@
 #  updated_at      :datetime         not null
 #  session_token   :string           not null
 #
-
 class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password_digest, :session_token, presence: true
@@ -46,6 +45,6 @@ class User < ApplicationRecord
   end
 
   def is_pword?(password)
-    BCrypt::Password.new(self.password_digest).is_password(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 end
