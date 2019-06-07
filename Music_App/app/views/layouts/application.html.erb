@@ -6,7 +6,7 @@
       <title style="font-style: italic">MusicApp</title>
       <% if current_user %>
         <form action="<%= session_url %>" method="POST">
-          <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+          <%= auth_token %>
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" value="Log Out!">
         </form>
